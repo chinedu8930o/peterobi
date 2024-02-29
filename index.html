@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COUNTDOWN TIMER</title>
+</head>
+<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Countdown</title>
+    <style>
+        *{
+            background-color: rgb(0, 128, 107);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            
+        }
+        #countdown {
+            font-size: 3rem;
+            margin-top: 2%;
+        }
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown for Limited Edition of iPhone 15</h1>
+    <img src="./chine.jpeg" width="20px" alt="iPhone 15" >
+    <h2> Giveaway ends on the 6th of Apirl</h2>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam laudantium aut, autem vero beatae reiciendis nobis aspernatur corporis eum debitis sit possimus fugiat alias in sunt voluptatem qui enim. Accusantium iusto tenetur corrupti, sit, voluptatum nam dolore animi, maxime maiores aspernatur accusamus. Dolore error eligendi laudantium aperiam fugit. Illo cumque sed sunt illum, alias quisquam consequatur sint architecto? Consectetur dicta est explicabo odit? Laborum vitae esse quidem tempora, magni enim fugiat? Inventore cum reprehenderit animi beatae officia, corrupti optio dolor aperiam alias laudantium totam! Accusamus iusto id perspiciatis consectetur ullam ipsum unde quasi, atque et? Veritatis dolor obcaecati fugit repellat? 
+    </p>
+    <div id="countdown">
+        00:00:00
+    </div>
+
+    <script>
+        // Set the target date for the countdown
+        const targetDate = new Date("april,6 2024 23:59:59").getTime();
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(() => {
+            // Get the current date and time
+            const now = new Date().getTime();
+
+            // Calculate the distance between now and the target date
+            const distance = targetDate - now;
+
+            // Calculate the remaining days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the remaining time in the countdown div
+            document.getElementById("countdown").innerHTML = `${days.toString().padStart(2, "0")}:${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+            // If the countdown has reached zero, clear the interval
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "TIME'S UP!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
